@@ -1,0 +1,1 @@
+Basic stdio for Opensearch MCP server
