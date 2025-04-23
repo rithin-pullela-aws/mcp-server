@@ -33,7 +33,7 @@ uv sync
 
 ## Running the Server
 ```
-uv run python mcpServer.py
+uv run python -m mcp_server_opensearch 
 ```
 
 ## Available tool
