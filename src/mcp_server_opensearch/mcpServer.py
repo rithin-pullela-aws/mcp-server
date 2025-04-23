@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import logging
-import os
-import json
 from enum import Enum
 
 from pydantic import BaseModel

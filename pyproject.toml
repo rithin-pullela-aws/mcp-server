@@ -9,3 +9,12 @@ dependencies = [
     "opensearch-py>=2.8.0",
     "pydantic>=2.11.3",
 ]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+mcp-server-opensearch = "mcp_server_opensearch:main"  # Importable path
