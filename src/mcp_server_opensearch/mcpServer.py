@@ -38,10 +38,3 @@ async def serve() -> None:
     options = server.create_initialization_options()
     async with stdio_server() as (reader, writer):
         await server.run(reader, writer, options, raise_exceptions=True)
-
-def main() -> None:
-    import anyio
-    anyio.run(serve)
-
-if __name__ == "__main__":
-    main()
