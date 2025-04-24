@@ -40,3 +40,27 @@ uv run python -m mcp_server_opensearch
 - list_indices: Lists all indices in OpenSearch.
 
 > More tools coming soon
+
+### To add the Local clone to Claude desktop:
+```
+{
+    "mcpServers": {
+        "opensearch-mcp-server": {
+        "command": "/opt/homebrew/bin/uv", #I mentioned path to uv, ideally uv is enough
+        "args": [
+            "--directory",
+            "path/to/the/clone/mcp-server",
+            "run",
+            "--",
+            "python",
+            "-m",
+            "mcp_server_opensearch"
+        ],
+        "env": {
+            
+        }
+        }
+    }
+}
+
+```
