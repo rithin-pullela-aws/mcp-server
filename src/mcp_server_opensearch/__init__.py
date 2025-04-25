@@ -24,11 +24,6 @@ def main() -> None:
         default=9900, 
         help='Port to listen on (SSE only)'
     )
-    parser.add_argument(
-        '--api-key', 
-        default='secret-token', 
-        help='API key for authentication (SSE only)'
-    )
 
     args = parser.parse_args()
 
