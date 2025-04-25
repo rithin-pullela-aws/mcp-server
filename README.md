@@ -31,13 +31,21 @@ uv lock
 uv sync
 ```
 
-## Running the Server
+## Running the Stdio Server
 ```
 uv run python -m mcp_server_opensearch 
 ```
 
+## Running the SSE Server
+```
+uv run python -m mcp_server_opensearch --transport sse
+```
+
 ## Available tool
 - list_indices: Lists all indices in OpenSearch.
+- get_index_mapping: Gets the mapping for specified index.
+- search_index: Searches an index using a query.
+- get_shards: Gets information about shards in OpenSearch cluster.
 
 > More tools coming soon
 

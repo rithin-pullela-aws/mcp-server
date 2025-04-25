@@ -71,7 +71,7 @@ class MCPStarletteApp:
     def create_app(self) -> Starlette:
         return Starlette(
             routes=[
-                Route("/sse", endpoint=self.handle_sse, methods=["POST"]),
+                Route("/sse", endpoint=self.handle_sse, methods=["GET"]),
                 Mount("/messages/", app=self.sse.handle_post_message),
             ],
             middleware=[Middleware(APIKeyMiddleware)],
