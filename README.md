@@ -49,26 +49,55 @@ uv run python -m mcp_server_opensearch --transport sse
 
 > More tools coming soon
 
-### To add the Local clone to Claude desktop:
+### To add the Local clone to Claude desktop with basic authentication:
 ```
 {
     "mcpServers": {
         "opensearch-mcp-server": {
-        "command": "/opt/homebrew/bin/uv", #I mentioned path to uv, ideally uv is enough
-        "args": [
-            "--directory",
-            "path/to/the/clone/mcp-server",
-            "run",
-            "--",
-            "python",
-            "-m",
-            "mcp_server_opensearch"
-        ],
-        "env": {
-            
-        }
+            "command": "/opt/homebrew/bin/uv", #I mentioned path to uv, ideally uv is enough
+            "args": [
+                "--directory",
+                "path/to/the/clone/mcp-server",
+                "run",
+                "--",
+                "python",
+                "-m",
+                "mcp_server_opensearch"
+            ],
+            "env": {
+                "OPENSEARCH_URL": "<your_opensearch_domain_url>",
+                "OPENSEARCH_USERNAME": "<your_opensearch_domain_username>",
+                "OPENSEARCH_PASSWORD": "<your_opensearch_domain_password>"
+            }
         }
     }
 }
 
+```
+
+### To add the Local clone to Claude desktop with IAM Role authentication:
+```
+{
+    "mcpServers": {
+        "opensearch-mcp-server": {
+            "command": "/opt/homebrew/bin/uv", #I mentioned path to uv, ideally uv is enough
+            "args": [
+                "--directory",
+                "path/to/the/clone/mcp-server",
+                "run",
+                "--",
+                "python",
+                "-m",
+                "mcp_server_opensearch"
+            ],
+            "env": {
+                "OPENSEARCH_URL": "<your_opensearch_domain_url>",
+                "AWS_REGION": "<your_aws_region>",
+                "AWS_ACCESS_KEY": "<your_aws_access_key>",
+                "AWS_SECRET_ACCESS_KEY": "<your_aws_secret_access_key>",
+                "AWS_SESSION_TOKEN": "<your_aws_session_token>",
+            }
+        }
+    }
+}
 ```
