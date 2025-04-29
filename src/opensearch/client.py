@@ -16,9 +16,16 @@ def initialize_client() -> OpenSearch:
     aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY", "")
     aws_session_token = os.getenv("AWS_SESSION_TOKEN", "")
 
+    if not opensearch_url:
+        raise ValueError("OPENSEARCH_URL environment variable is not set")
+
     # Parse the OpenSearch domain URL to extract host and port
     parsed_url = urlparse(opensearch_url)
     host = parsed_url.hostname
+
+    if not host:
+        raise ValueError(f"Invalid OpenSearch URL: {opensearch_url}")
+        
     is_aos = AWS_DOMAIN in host
     port = parsed_url.port or (443 if is_aos else 9200)
 

@@ -1,6 +1,6 @@
 # src/mcp_server_opensearch/__init__.py
-from .mcpServer import serve as serve_stdio
-from .sseServer import serve as serve_sse
+from .stdio_server import serve as serve_stdio
+from .sse_server import serve as serve_sse
 
 def main() -> None:
     import argparse
