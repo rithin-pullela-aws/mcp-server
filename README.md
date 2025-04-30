@@ -62,7 +62,7 @@ uv run python -m mcp_server_opensearch --transport sse
 ```
 
 ## Claude Desktop Integration
-### Using the Published [PyPI Package](https://pypi.org/project/test-opensearch-mcp/0.1.0/)
+### Using the Published [PyPI Package](https://pypi.org/project/test-opensearch-mcp/)
 ```
 {
     "mcpServers": {
