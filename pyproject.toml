@@ -1,5 +1,5 @@
 [project]
-name = "test-mcp-opensearch"
+name = "test-opensearch-mcp"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -25,4 +25,4 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [project.scripts]
-mcp-server-opensearch = "mcp_server_opensearch:main"  # Importable path
+test-opensearch-mcp = "mcp_server_opensearch:main"  # Importable path
