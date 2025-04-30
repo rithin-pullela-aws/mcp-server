@@ -49,6 +49,8 @@ python -m mcp_server_opensearch --transport sse
 
 ### Running with UV:
 
+**Note**: These commands must be run from the `src` directory of the project.
+
 - **Stdio Server**
 ```
 uv run python -m mcp_server_opensearch 
