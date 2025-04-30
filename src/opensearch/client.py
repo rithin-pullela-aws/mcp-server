@@ -39,6 +39,11 @@ def initialize_client() -> OpenSearch:
 
     # Configure authentication based on domain type
     if is_aos:
+        # Use basic authentication if username and password are provided
+        if opensearch_username and opensearch_password:
+            client_kwargs['http_auth'] = (opensearch_username, opensearch_password)
+            return OpenSearch(**client_kwargs)
+        
         # Create AWS4Auth for IAM authentication
         aws_auth = AWS4Auth(
             aws_access_key,
