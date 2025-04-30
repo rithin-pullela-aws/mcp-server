@@ -1,7 +1,46 @@
 ### OpenSearch MCP Server (stdio)
-A minimal Model Context Protocol (MCP) server for OpenSearch exposing a single list_indices tool over stdio.
+A minimal Model Context Protocol (MCP) server for OpenSearch exposing 4 tools over stdio and sse server.
 
-## Development Notes:
+## Installation:
+
+This can be installed from PyPI via pip:
+```
+pip install test-mcp-opensearch
+```
+
+### Environment Variables
+
+Configure authentication by setting the appropriate environment variables:
+
+**Basic Authentication**
+```
+export OPENSEARCH_URL="<your_opensearch_domain_url>"
+export OPENSEARCH_USERNAME="<your_opensearch_domain_username>"
+export OPENSEARCH_PASSWORD="<your_opensearch_domain_password>"
+```
+
+**IAM Role Authentication**
+```
+export OPENSEARCH_URL="<your_opensearch_domain_url>"
+export AWS_REGION="<your_aws_region>"
+export AWS_ACCESS_KEY="<your_aws_access_key>"
+export AWS_SECRET_ACCESS_KEY="<your_aws_secret_access_key>"
+export AWS_SESSION_TOKEN="<your_aws_session_token>"
+```
+
+### Running the Server
+
+**Stdio Server**
+```
+python -m mcp_server_opensearch
+```
+
+**SSE Server**
+```
+python -m mcp_server_opensearch --transport sse
+```
+
+## Development Setup:
 
 1. Create & activate a virtual environment
 ```
@@ -31,17 +70,17 @@ uv lock
 uv sync
 ```
 
-## Running the Stdio Server
+### Running the Stdio Server
 ```
 uv run python -m mcp_server_opensearch 
 ```
 
-## Running the SSE Server
+### Running the SSE Server
 ```
 uv run python -m mcp_server_opensearch --transport sse
 ```
 
-## Available tool
+## Available tools
 - list_indices: Lists all indices in OpenSearch.
 - get_index_mapping: Gets the mapping for specified index.
 - search_index: Searches an index using a query.
@@ -49,7 +88,8 @@ uv run python -m mcp_server_opensearch --transport sse
 
 > More tools coming soon
 
-### To add the Local clone to Claude desktop with basic authentication:
+## Integration with Claude Desktop
+### Using basic authentication:
 ```
 {
     "mcpServers": {
@@ -75,7 +115,7 @@ uv run python -m mcp_server_opensearch --transport sse
 
 ```
 
-### To add the Local clone to Claude desktop with IAM Role authentication:
+### Using IAM Role authentication:
 ```
 {
     "mcpServers": {
