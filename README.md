@@ -59,37 +59,8 @@ uv run python -m mcp_server_opensearch
 uv run python -m mcp_server_opensearch --transport sse
 ```
 
-## Development
-### Environment Setup:
-
-1. Create & activate a virtual environment
-```
-uv venv 
-source .venv/bin/activate
-```
-
-2. Install dependencies
-
-```
-uv sync # Install from uv.lock
-```
-
-### Managing Dependencies:
-- Add new dependencies:
-```
-uv add <package-name>
-```
-
-> Note: This automatically updates the pyproject.toml, uv.lock, and installs in virtual environment
-
-- Update after manual pyproject.toml changes:
-```
-uv lock 
-uv sync
-```
-
 ## Claude Desktop Integration
-### For Development (Using Local Clone):
+### Using Local Clone:
 ```
 {
     "mcpServers": {
@@ -124,12 +95,12 @@ uv sync
 
 ```
 
-### For Installed Package (Via pip):
+### Using Installed Package (via pip):
 ```
 {
     "mcpServers": {
         "opensearch-mcp-server": {
-            "command": "python",  // Or full path to python
+            "command": "python",  // Or full path to python with PyPI package installed
             "args": [
                 "-m",
                 "mcp_server_opensearch"
@@ -151,4 +122,33 @@ uv sync
         }
     }
 }
+```
+
+## Development
+### Environment Setup:
+
+1. Create & activate a virtual environment
+```
+uv venv 
+source .venv/bin/activate
+```
+
+2. Install dependencies
+
+```
+uv sync # Install from uv.lock
+```
+
+### Managing Dependencies:
+- Add new dependencies:
+```
+uv add <package-name>
+```
+
+> Note: This automatically updates the pyproject.toml, uv.lock, and installs in virtual environment
+
+- Update after manual pyproject.toml changes:
+```
+uv lock 
+uv sync
 ```
