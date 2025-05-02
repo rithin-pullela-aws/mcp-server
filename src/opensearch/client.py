@@ -6,7 +6,7 @@ import boto3
 
 # This file should expose the OpenSearch py client
 def initialize_client() -> OpenSearch:
-    AWS_DOMAIN = "amazonaws.com"
+    AWS_DOMAINS = ("amazonaws.com", ".aws")
 
     opensearch_url = os.getenv("OPENSEARCH_URL", "")
     opensearch_username = os.getenv("OPENSEARCH_USERNAME", "")
@@ -19,19 +19,13 @@ def initialize_client() -> OpenSearch:
     if not opensearch_url:
         raise ValueError("OPENSEARCH_URL environment variable is not set")
 
-    # Parse the OpenSearch domain URL to extract host and port
+    # Parse the OpenSearch domain URL
     parsed_url = urlparse(opensearch_url)
-    host = parsed_url.hostname
-
-    if not host:
-        raise ValueError(f"Invalid OpenSearch URL: {opensearch_url}")
-        
-    is_aos = AWS_DOMAIN in host
-    port = parsed_url.port or (443 if is_aos else 9200)
+    is_aos = any(domain in opensearch_url for domain in AWS_DOMAINS)
 
     # Common client configuration
     client_kwargs: Dict[str, Any] = {
-        'hosts': [{"host": host, "port": port}],
+        'hosts': [opensearch_url],
         'use_ssl': (parsed_url.scheme == "https"),
         'verify_certs': True,
         'connection_class': RequestsHttpConnection,
