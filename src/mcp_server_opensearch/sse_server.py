@@ -7,10 +7,7 @@ from typing import Any
 import uvicorn
 from starlette.applications import Starlette
 from starlette.requests import Request
-from starlette.responses import JSONResponse
 from starlette.routing import Mount, Route
-from starlette.middleware import Middleware
-from starlette.middleware.base import BaseHTTPMiddleware
 from mcp.server.sse import SseServerTransport
 from mcp.server import Server
 from mcp.types import TextContent, Tool
