@@ -1,3 +1,6 @@
+# Copyright OpenSearch Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from opensearchpy import OpenSearch, RequestsHttpConnection
 from urllib.parse import urlparse
 from requests_aws4auth import AWS4Auth

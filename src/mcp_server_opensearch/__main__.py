@@ -1,4 +1,6 @@
-# src/mcp_server_opensearch/__main__.py
+# Copyright OpenSearch Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from . import main
 
 print("Starting MCP server...")
