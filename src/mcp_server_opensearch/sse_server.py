@@ -1,7 +1,6 @@
 # Copyright OpenSearch Contributors
 # SPDX-License-Identifier: Apache-2.0
 
-import logging
 import argparse
 from typing import Any
 
@@ -16,16 +15,6 @@ from mcp.server.sse import SseServerTransport
 from mcp.server import Server
 from mcp.types import TextContent, Tool
 from tools.tools import TOOL_REGISTRY
-
-# Constants
-API_KEY = "secret-token"
-
-class APIKeyMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next):
-        auth_header = request.headers.get("authorization")
-        if not auth_header or auth_header != f"Bearer {API_KEY}":
-            return JSONResponse({"detail": "Unauthorized"}, status_code=401)
-        return await call_next(request)
 
 def create_mcp_server() -> Server:
     server = Server("opensearch-mcp-server")
@@ -73,8 +62,7 @@ class MCPStarletteApp:
             routes=[
                 Route("/sse", endpoint=self.handle_sse, methods=["GET"]),
                 Mount("/messages/", app=self.sse.handle_post_message),
-            ],
-            middleware=[Middleware(APIKeyMiddleware)],
+            ]
         )
 
 async def serve(host: str = "0.0.0.0", port: int = 9900) -> None:
