@@ -1,3 +1,6 @@
+# Copyright OpenSearch Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from pydantic import BaseModel
 from mcp.types import TextContent
 from opensearch.helper import list_indices, get_index_mapping, search_index, get_shards
@@ -96,26 +99,26 @@ async def get_shards_tool(args: GetShardsArgs) -> list[dict]:
         }]
 
 TOOL_REGISTRY = {
-    "list_indices": {
+    "ListIndexTool": {
         "description": "Lists all indices in OpenSearch",
         "input_schema": ListIndicesArgs.model_json_schema(),
         "function": list_indices_tool,
         "args_model": ListIndicesArgs,
     },
-    "get_index_mapping": {
-        "description": "Gets the mapping for specified index",
+    "IndexMappingTool": {
+        "description": "Retrieves index mapping and setting information for an index in OpenSearch",
         "input_schema": GetIndexMappingArgs.model_json_schema(),
         "function": get_index_mapping_tool,
         "args_model": GetIndexMappingArgs,
     },
-    "search_index": {
-        "description": "Searches an index using a query",
+    "SearchIndexTool": {
+        "description": "Searches an index using a query written in query domain-specific language (DSL) in OpenSearch",
         "input_schema": SearchIndexArgs.model_json_schema(),
         "function": search_index_tool,
         "args_model": SearchIndexArgs,
     },
-    "get_shards": {
-        "description": "Gets information about shards in OpenSearch cluster",
+    "GetShardsTool": {
+        "description": "Gets information about shards in OpenSearch",
         "input_schema": GetShardsArgs.model_json_schema(),
         "function": get_shards_tool,
         "args_model": GetShardsArgs,

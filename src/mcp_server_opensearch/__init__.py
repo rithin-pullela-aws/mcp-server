@@ -1,4 +1,6 @@
-# src/mcp_server_opensearch/__init__.py
+# Copyright OpenSearch Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 from .stdio_server import serve as serve_stdio
 from .sse_server import serve as serve_sse
 
