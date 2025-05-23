@@ -1,3 +1,5 @@
+# NOTICE: This project has been graduated and moved to the [opensearch-mcp-server-py](https://github.com/opensearch-project/opensearch-mcp-server-py) repository. See you there! This repository is now archived.
+
 # OpenSearch MCP Server
 A minimal Model Context Protocol (MCP) server for OpenSearch exposing 4 tools over stdio and sse server.
 
